@@ -27,45 +27,33 @@ showAvailableProducts();
 
 // Creo una función para que el usuario pueda agregar un producto al carrito
 function addToCart(){
-    let name = prompt('Ingresá el nombre del producto que quiere agregar a su carrito:');
+    let name = prompt('Ingresá el nombre del producto que quiere agregar a su carrito: (en mayusculas');
     // Uso el metodo some para ver si algun elemento del array coincide con el valor ingresado en el prompt
     let inStockProduct = availableProducts.some(product => product.name === name);
 
     if (inStockProduct) {
         // Solo si el producto ingresado coincide con los productos disponibles, pregunta el precio y la cantidad que desea comprar
-        let price = parseInt(prompt('Ingrese el precio que figura al lado del producto que ingreso:'));
+        let product = availableProducts.find(p => p.name === name);
         let quantity = parseInt(prompt('Ingresá la cantidad que querés comprar:'));
         
         // Creo un objeto para el producto
-        let product = {
+        let cartProduct = {
             name: name,
-            price: price,
+            price: product.price,
             quantity: quantity
         };
 
         // Para agregar el producto ingresado al carrito
-        cart.push(product);
+        cart.push(cartProduct);
 
         // Envio un mensaje avisando que el producto fue agregado al carrito
         alert(`El producto ${name} fue agregado a tu carrito!`);
     } else{
-        alert(`El producto ${name} no esta disponible en PISTACHO`)
-        menu();
+        alert(`El producto ${name} no está disponible en PISTACHO`);
     }
 }
 
 addToCart();
-
-// Pregunto si quiere agregar otro producto al carrito
-let addAnotherProduct = prompt('Querés agregar otro producto al carrito? (Si/No)');
-
-if (addAnotherProduct === 'Si' || addAnotherProduct === 'SI' || addAnotherProduct === 'si'){
-    // Si el usuario desea agregar otro producto al carrito, invoco la función addToCart y luego la funcion que calcula el total de la compra
-    addToCart();
-    totalTicket();
-} else{
-    totalTicket();
-}
 
 // Creo una función para calcular el total de la compra
 function totalTicket(){
@@ -76,7 +64,37 @@ function totalTicket(){
         total = total + product.price * product.quantity
     }
 
+    // Segun el total de la compra, aplico un descuento distinto
+    if (total >= 15000){
+        total = applyDiscount(total, 20);
+    } else if(total > 10000){
+        total = applyDiscount(total, 10);
+    } else if(total > 5000) {
+        total = applyDiscount(total, 5);
+    }
+    
     alert(`Total de la compra: $${total}`);
+}
+
+// Pregunto si quiere agregar otro producto al carrito
+let addAnotherProduct = prompt('Querés agregar otro producto al carrito? (Si/No)');
+
+if (addAnotherProduct === 'Si' || addAnotherProduct === 'SI' || addAnotherProduct === 'si'){
+    // Si el usuario desea agregar otro producto al carrito, invoco la función addToCart y luego la funcion que calcula el total de la compra
+    addToCart();
+    addAnotherProduct = prompt('Querés agregar mas productos? (Si/No)');
+} else{
+    totalTicket();
+} 
+
+// Funcion para aplicar descuento al total de la compra (dependiendo de su monto final)
+function applyDiscount(total, discountPercentage){
+    //Calculo el descuento
+    let discountAmount = total * (discountPercentage / 100);
+
+    // Aplico el descuento al total
+    let totalWithDiscount = total - discountAmount;
+    return totalWithDiscount;
 }
 
 // Creo una función que muestre el contenido del carrito
@@ -149,7 +167,7 @@ function menu(){
                 findProduct();
                 break;
             case 5:
-                filteredProducts();
+                priceFilter();
                 break;
             case 6:
                 alert("Gracias por comprar en nuestra tienda!");
