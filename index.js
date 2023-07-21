@@ -1,24 +1,57 @@
-// Creo el array para el shopping cart
+// Creo los array para el shopping cart y para los productos en stock (dentro de este array pongo objetos que son cada producto)
 let cart = [];
+
+let availableProducts = [
+    {name: 'AKIRA', price: 6400},
+    {name: 'AMÉLIE', price: 5800},
+    {name: 'CATALINA', price: 14600},
+    {name: 'CHARLIE', price: 7800},
+    {name: 'FRANCIS', price: 9980},
+    {name: 'GINEBRA', price: 13600},
+];
+
+// Creo una función para mostrar al usuario los productos disponibles
+function showAvailableProducts(){
+    console.log('Bienvenido/a a la tienda de PISTACHO, estos son los productos disponibles:');
+    
+    // Uso un forEach para recorrer el array availableProducts y mostrarselos al usuario
+    availableProducts.forEach((product) => {
+        console.log(`${product.name} - Precio: $${product.price}`)
+    })
+}
+
+// Alert para saludar y muestro los productos disponibles
+alert('Bienvenido/a a la tienda de PISTACHO, estos son los productos disponibles:');
+
+showAvailableProducts();
 
 // Creo una función para que el usuario pueda agregar un producto al carrito
 function addToCart(){
-    let name = prompt('Ingresá el nombre del producto:');
-    let price = parseInt(prompt('Ingresá el precio del producto'));
-    let quantity = parseInt(prompt('Ingresá la cantidad que querés comprar:'));
+    let name = prompt('Ingresá el nombre del producto que quiere agregar a su carrito:');
+    // Uso el metodo some para ver si algun elemento del array coincide con el valor ingresado en el prompt
+    let inStockProduct = availableProducts.some(product => product.name === name);
 
-    // Creo un objeto para el producto
-    let product = {
-        name: name,
-        price: price,
-        quantity: quantity
-    };
+    if (inStockProduct) {
+        // Solo si el producto ingresado coincide con los productos disponibles, pregunta el precio y la cantidad que desea comprar
+        let price = parseInt(prompt('Ingrese el precio que figura al lado del producto que ingreso:'));
+        let quantity = parseInt(prompt('Ingresá la cantidad que querés comprar:'));
+        
+        // Creo un objeto para el producto
+        let product = {
+            name: name,
+            price: price,
+            quantity: quantity
+        };
 
-    // Para agregar el producto ingresado al carrito
-    cart.push(product);
+        // Para agregar el producto ingresado al carrito
+        cart.push(product);
 
-    // Envio un mensaje avisando que el producto fue agregado al carrito
-    alert(`El producto ${name} fue agregado a tu carrito!`);
+        // Envio un mensaje avisando que el producto fue agregado al carrito
+        alert(`El producto ${name} fue agregado a tu carrito!`);
+    } else{
+        alert(`El producto ${name} no esta disponible en PISTACHO`)
+        menu();
+    }
 }
 
 addToCart();
@@ -27,7 +60,7 @@ addToCart();
 let addAnotherProduct = prompt('Querés agregar otro producto al carrito? (Si/No)');
 
 if (addAnotherProduct === 'Si' || addAnotherProduct === 'SI' || addAnotherProduct === 'si'){
-    // Si el usuario desea agregar otro producto al carrito, ejecuto la función addToCart y luego le calculo el total de su compra
+    // Si el usuario desea agregar otro producto al carrito, invoco la función addToCart y luego la funcion que calcula el total de la compra
     addToCart();
     totalTicket();
 } else{
@@ -60,13 +93,14 @@ cartContent();
 
 // Creo otra función para buscar un producto por su nombre dentro del carrito
 function findProduct(){
-    let searchName = prompt("¿Qué producto dentro de tu carrito queres encontrar?"); 
+    let searchName = prompt("¿Qué producto dentro de tu carrito queres encontrar?");
+    // Mediante el metodo find busco el producto en el array
     let foundProduct = cart.find(product => product.name === searchName);
 
     if (foundProduct){
         console.log(`Producto encontrado: ${foundProduct.name}`)
     } else{
-        console.log("No se encontro ningun producto con ese nombre");
+        console.log("No se encontro ningun producto con ese nombre.");
     }
 }
 
@@ -75,6 +109,7 @@ findProduct();
 // Creo una función que filtre los productos del carrito según su precio
 function priceFilter(){
     let maxPrice = parseInt(prompt('Ingrese el precio máximo para poder filtrarlo y devolver los productos con igual o menor precio:'));
+    // El metodo filter va a filtrar los precios que sean iguales o menores a lo ingresado en el prompt y almacenado en la variable maxPrice
     let filteredProducts = cart.filter(product => product.price <= maxPrice);
 
     console.log(`Los productos con igual o menor valor a $${maxPrice} son:`);
@@ -126,4 +161,3 @@ function menu(){
 }
 
 menu();
-
