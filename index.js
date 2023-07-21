@@ -65,7 +65,7 @@ function totalTicket(){
     }
 
     // Segun el total de la compra, aplico un descuento distinto
-    if (total >= 15000){
+    if (total > 15000){
         total = applyDiscount(total, 20);
     } else if(total > 10000){
         total = applyDiscount(total, 10);
