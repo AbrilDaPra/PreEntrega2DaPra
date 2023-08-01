@@ -1,0 +1,460 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Pathway Gothic One';
+}
+
+/* GENERAL */
+ul{
+    list-style-type: none;
+}
+
+a{
+    text-decoration: none;
+}
+body{
+    background-color: black;
+}
+
+/* HEADER */
+header{
+    background-color: black;
+    width: 100%;
+    z-index: 1;
+}
+.navbar-brand{
+    color: #87f867;
+    margin-left: 30px;
+}
+.navbar-brand:hover{
+    color: #87f867;
+}
+.navbar-toggler{
+    color: #87f867;
+    border-color: #87f867;
+    background-color: #87f867;
+}
+.collapsed{
+    background-color: #87f867;
+}
+.nav-item{
+    margin-right: 30px;
+}
+.nav-link{
+    color: white;
+    font-size: 23px;
+    margin-right: 10px;
+}
+.nav-link:hover, .nav-link:focus{
+    color: #87f867;
+}
+.navbar-collapse li i{
+    color: white;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+}
+.navbar-collapse li i:hover{
+    color: #87f867;
+}
+.dropdown-item:hover{
+    background-color: #87f867;
+}
+
+/* MAIN */
+main{
+    background-color: black;
+}
+
+/* FOOTER */
+footer{
+    background-color: black;
+}
+.icon-container{
+    display: flex;
+    justify-content: center;
+}
+.icon-circle{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #87f867;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+.icon-circle:hover{
+    background-color: white;
+}
+.icon-circle i{
+    font-size: 30px;
+    color: black;
+    justify-content: center;
+    align-items: center;    
+}
+.aby h5{
+    color: white;
+    display: flex;
+    justify-content: center;
+    font-family: 'Raleway';
+    font-size: 17px;
+    margin-bottom: 5px;
+}
+.aby h5 a{
+    color: #87f867;
+}
+
+/* INDEX */
+#hero{
+    background-color: black;
+    background-repeat: repeat-x;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#hero h2{
+    color: #87f867;
+    font-size: 90px;
+    text-align: center;  
+}
+#bannerTypography{
+    animation: changeTypography 2s infinite;
+}
+#favorites{
+    padding-bottom: 60px;
+}
+#favorites h2{
+    color: #87f867;
+    font-size: 40px;
+    text-align: center;
+    margin: 40px;
+}
+#favorites .row{
+    margin: 0px;
+}
+#favorites img{
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+}
+#favorites h3{
+    color: #87f867;
+    font-size: 25px;
+    text-align: center;
+    padding-top: 15px;
+}
+#favorites h4{
+    color: #87f867;
+    font-size: 18px;
+    text-align: center;
+}
+#favorites button{
+    background-color: #87f867;
+    border-radius: 5px;
+    border-color: #87f867;
+    color: black;
+    padding: 5px 2px 5px 2px;
+    margin-top: 15px;
+}
+
+/* CATALOGUE */
+#categories .row{
+    height: 75vh;
+}
+#categories .col{
+    align-items: center;
+    display: flex;  
+}
+.image-bg{
+    position: relative;
+    display: inline-block;
+    transition: transform 0.3s ease-in-out;
+}
+.image-bg:hover{
+    transform: scale(1.1);   
+}
+.image-bg img{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+.image-bg h2{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+    color: #87f867;
+    text-align: center;    
+}
+
+/* HOW TO BUY */
+#howToBuy{
+    height: 80vh;
+    background-color: #87f867;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#howToBuy h3{
+    font-size: 40px;
+    margin: 20px; 
+}
+#howToBuy p{
+    color: black;
+    font-size: 20px;
+    text-align: justify;
+    max-width: 700px;
+    font-family: 'Raleway';
+    font-weight: bold; 
+}
+#howToBuy p h2{
+    font-family: 'Pathway Gothic One';
+    text-align: start;
+}
+
+/* CONTACT */
+.banner-contact{
+    background-color: #87f867;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.banner-contact button{
+    background-color: black;
+    border: 0;
+    padding: 20px;    
+}
+.banner-contact h2{
+    color: #87f867;
+    font-size: 60px;
+}
+#contactInfo{
+    margin-top: 30px;
+}
+#contactInfo .col{
+    border-right: 1px solid #87f867;   
+}
+#contactInfo i{
+    color: #87f867;
+    font-size: 20px;
+    padding-bottom: 20px;
+    font-size: 30px;    
+}
+#contactInfo h4{
+    color: #87f867;
+    font-size: 20px;
+    padding-bottom: 20px;    
+}
+#contactInfo h5{
+    color: white;
+    font-size: 18px;
+}
+.last{
+    border-right: 0;   
+}
+#map iframe{
+    margin-top: 50px;
+    width: 100%;
+}
+
+/* ABOUT US */
+#aboutUs{
+    height: 80vh;
+    background-color: #87f867;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#aboutUs h3{
+    font-size: 40px;
+}
+#aboutUs p{
+    color: black;
+    font-size: 20px;
+    text-align: justify;
+    max-width: 700px;
+    font-family: 'Raleway';
+    font-weight: bold;
+}
+#aboutUs h2{
+    font-family: 'Pathway Gothic One';
+    text-align: start;  
+}
+
+/* CATALOGUE*/
+#catalogue h2{
+    color: #87f867;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+    margin: 40px;
+}
+.categories{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+.categories .card-product{
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.categories .card-product img{
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+}
+.categories .card-product h3{
+    color: #87f867;
+    text-align: center;
+    margin-top: 5px;
+}
+.categories .card-product h4{
+    color: #87f867;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 10px; 
+}
+.buy-btn{
+    background-color: #87f867;
+    border-radius: 5px;
+    border-color: #87f867;
+    padding: 5px;
+}
+
+/* CART */
+#shoppingCart{
+    height: 75vh;
+}
+.cart-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.empty-cart{
+    color: #87f867;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+.empty-cart i{
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+.cart-products{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 40px;
+}
+.cart-product{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    background-color: rgba(128, 128, 128, 0.2);
+    padding: 5px;
+    border-radius: 10px;
+}
+.cart-product-img{
+    width: 100px;
+    border-radius: 5px;
+}
+.cart-product small{
+    font-size: 20px;
+}
+.cart-product-delete{
+    border: 0;
+    background-color: transparent;
+    color: #87f867;
+    padding-right: 40px;
+}
+.subtitle{
+    color: #87f867;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+}
+.cart-actions{
+    display: flex;
+    justify-content: space-between;
+}
+.cart-actions-empty{
+    border: 0;
+    background-color: rgba(128, 128, 128, 0.3);
+    padding: 10px;
+    border-radius: 15px;
+    color: #87f867;
+    text-transform: uppercase;
+    margin-left: 40px;
+    font-size: 15px;
+}
+.cart-actions-right{
+    display: flex;
+}
+.cart-actions-total{
+    display: flex;
+    background-color: rgba(128, 128, 128, 0.3);
+    padding: 10px;
+    color: #87f867;
+    text-transform: uppercase;
+    margin-left: 40px;
+    font-size: 15px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.cart-actions-total p{
+    margin-bottom: 0;
+}
+.cart-actions-buy{
+    border: 0;
+    background-color: #87f867;
+    padding: 10px;
+    color: black;
+    text-transform: uppercase;
+    margin-right: 40px;
+    font-size: 15px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    align-items: center;
+    display: flex;
+}
+.cart-bought{
+    color: #87f867;
+    padding-left: 40px;
+    font-size: 18px;
+}
+
+.disabled{
+    display: none;
+}
+
+
+
+@keyframes changeTypography {
+    0% {
+      font-family: 'Pathway Gothic One', sans-serif;
+    }
+    100% {
+      font-family: 'Raleway', sans-serif;
+    }
+}
