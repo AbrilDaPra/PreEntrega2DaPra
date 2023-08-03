@@ -30,18 +30,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav mx-auto ms-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="../index.html">HOME</a></li>
-                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="./catalogue.html" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        CATALOGUE
-                      </a>
-                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="./catalogue/fannypack.html" data-category="fannypack">Fanny Packs</a></li>
-                        <li><a class="dropdown-item" href="./catalogue/handbag.html" data-category="handbag">Handbags</a></li>
-                        <li><a class="dropdown-item" href="./catalogue/bag.html" data-category="bag">Bags</a></li>
-                        <li><a class="dropdown-item" href="./catalogue/wallet.html" data-category="wallet">Wallets</a></li>
-                        <li><a class="dropdown-item" href="./catalogue.html" data-category="all">All products</a></li>
-                      </ul>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="../pages/catalogue.html">CATALOGUE</a></li>
                     <li class="nav-item"><a class="nav-link" href="../pages/howtobuy.html">HOW TO BUY</a></li>
                     <li class="nav-item"><a class="nav-link" href="../pages/aboutus.html">ABOUT US</a></li>
                     <li class="nav-item"><a class="nav-link" href="../pages/contact.html">CONTACT</a></li>
@@ -63,6 +52,16 @@
         <main>
           <section id="catalogue">
             <h2>CATALOGUE</h2>
+            <div class="categories-container">
+              <ul>
+                <li id="fannypack" class="items-categorie" data-category="fannypack">FANNY PACKS</li>
+                <li id="handbag" class="items-categorie" data-category="handbag">HANDBAGS</li>
+                <li id="bag" class="items-categorie" data-category="bag">BAGS</li>
+                <li id="wallet" class="items-categorie" data-category="wallet">WALLETS</li>
+                <li id="all" class="items-categorie" data-category="all">ALL PRODUCTS</li>
+              </ul>
+            </div>
+            
             <div id="productContainer" class="categories product-container">
 
             </div>

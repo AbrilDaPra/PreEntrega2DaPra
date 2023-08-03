@@ -162,7 +162,7 @@ footer{
 }
 
 /* CATALOGUE */
-#categories .row{
+/* #categories .row{
     height: 75vh;
 }
 #categories .col{
@@ -193,7 +193,7 @@ footer{
     padding: 10px;
     color: #87f867;
     text-align: center;    
-}
+} */
 
 /* HOW TO BUY */
 #howToBuy{
@@ -302,10 +302,28 @@ footer{
     font-size: 60px;
     margin: 40px;
 }
+.categories-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 30px;
+    margin: 30px;
+}
+.items-categorie{
+    margin: 0 20px;
+    cursor: pointer;
+    display: inline-block;
+}
+.items-categorie:hover{
+    color: #87f867;
+}
 .categories{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+    gap: 20px;
+    padding: 20px;
+    
 }
 .categories .card-product{
     margin-bottom: 30px;

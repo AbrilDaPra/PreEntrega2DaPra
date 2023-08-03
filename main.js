@@ -53,8 +53,10 @@ loadProducts(products);
 //Función para filtrar los productos según la categoria seleccionada
 function filterProductsByCategorie(categorie){
     if (categorie === "all"){
+        //Si la opción seleccionada es "all", llama a la función que muestra todos los productos
         loadProducts(products);
     }else{
+        //Si la opción seleccionada no es "all", filtra según id asignado
         let productsByCategorie = products.filter(
             (product) => product.categorie.id === categorie
         );
@@ -62,20 +64,28 @@ function filterProductsByCategorie(categorie){
     }
 }
 
-document.querySelectorAll(".dropdown-item").forEach((option) => {
-    option.addEventListener("click", (event) => {
-        event.preventDefault();
-        let selectedCategory = event.currentTarget.getAttribute("data-category");
-        filterProductsByCategorie(selectedCategory);
-    })
-})
+// Event listener para cada categoría
+let categorieItems = document.querySelectorAll(".items-categorie");
+categorieItems.forEach((item) => {
+  item.addEventListener("click", (e) => {
+    let selectedCategorie = e.target.dataset.categorie;
+    filterProductsByCategorie(selectedCategorie);
+  });
+});
 
+// categorieButton.forEach(button => {
+//     button.addEventListener("click", (e) =>{
+//         categorieButton.forEach(button => button.classList.remove("active"));
+//         e.currentTarget.classList.add("active");
 
-
-
-
-
-
+//         if(e.currentTarget.id != "all"){
+//             let productsButton = products.filter(product => product.categorie.id === e.currentTarget.id);
+//             loadProducts(productsButton);
+//         } else{
+//             loadProducts(products);
+//         }
+//     })
+// })
 
 // Creo una función para mostrar al usuario los productos disponibles
 // function showAvailableProducts(){
