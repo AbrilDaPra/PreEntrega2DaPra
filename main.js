@@ -40,9 +40,14 @@ function loadProducts(chosenProducts){
             <img src="${product.img}" alt="${product.name}">
             <h3>${product.name}</h3>
             <h4>Price: $${product.price}</h4>
-            <button class="buy-btn" id="${product.id}">ADD TO CART</button>
+            <button class="buy-btn addtocart-btn" id="${product.id}">ADD TO CART</button>
         `;
 
+        //Agrego el evento onclick al botón
+        let addToCartButton = div.querySelector('.buy-btn');
+        addToCartButton.addEventListener('click', () => addToCart(product.id));
+        
+        //Agrego la card product al contenedor de productos
         productContainer.append(div);
     })
 }
@@ -73,19 +78,27 @@ categorieItems.forEach((item) => {
   });
 });
 
-// categorieButton.forEach(button => {
-//     button.addEventListener("click", (e) =>{
-//         categorieButton.forEach(button => button.classList.remove("active"));
-//         e.currentTarget.classList.add("active");
+function addToCart(productID){
+    //Busco el producto por su ID en el array de productos disponibles
+    let productToAdd = products.find((product) => product.id === productID);
 
-//         if(e.currentTarget.id != "all"){
-//             let productsButton = products.filter(product => product.categorie.id === e.currentTarget.id);
-//             loadProducts(productsButton);
-//         } else{
-//             loadProducts(products);
-//         }
-//     })
-// })
+    if(!productToAdd){
+        console.error("The product doesn't exists...");
+        return;
+    }
+
+    //Verifico si el producto ya fue agregado al carrito
+    let inCartProduct = cart.find((product) => product.id === productID);
+
+    if(inCartProduct){
+        //Si el producto ya habia sido agregado al carrito previamente, incrementamos la cantidad
+        inCartProduct.quantity++;
+    }else{
+        // Si el producto no estaba antes en el carrito, lo agrego
+        cart.push({ ...productToAdd, quantity: 1});
+    }
+}
+
 
 // Creo una función para mostrar al usuario los productos disponibles
 // function showAvailableProducts(){
