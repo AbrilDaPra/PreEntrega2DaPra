@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             //Agrego el evento onclick al botón
             let addToCartButton = div.querySelector('.buy-btn');
-            addToCartButton.addEventListener('click', () => addToCart(product.id, products));
+            addToCartButton.addEventListener('click', () => addToCart(product.id));
             
             //Agrego la card product al contenedor de productos
             productContainer.append(div);
