@@ -1,5 +1,5 @@
 //Función para mostrar el carrito en la página
-function displayCartInCartPage(){
+function displayCartInCartPage(cart){
     let cartItemsContainer = document.getElementById("cartItems");
     cartItemsContainer.innerHTML = "";
 
@@ -22,7 +22,7 @@ function saveCartToLocalStorage(){
 }
 
 //Función para agregar producto al carrito
-function addToCart(productID){
+function addToCart(productID, products, cart){
     //Busco el producto por su ID en el array de productos disponibles
     let productToAdd = products.find((product) => product.id === productID);
 
