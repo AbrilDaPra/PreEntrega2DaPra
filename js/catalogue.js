@@ -50,7 +50,7 @@ function loadProducts(chosenProducts){
         //Agrego el evento onclick al botón
 
         let addToCartButton = document.getElementById(`agregar-${product.id}`);
-        addToCartButton.addEventListener('click', () => addToCart(product));
+        addToCartButton.addEventListener('click', () => addToCart(product.id));
     });
 }
 
@@ -82,25 +82,20 @@ categorieItems.forEach((item) => {
     
 
 //Función para agregar producto al carrito
-function addToCart(productID){
-    //Busco el producto por su ID en el array de productos disponibles
-    let productToAdd = products.find((product) => product.id === productID);
-
+function addToCart(product){
     //Verifico si el producto ya fue agregado al carrito
-    let inCartProduct = cart.find((product) => product.id === productID);
+    let inCartProduct = cart.find((prod) => prod.id === product.id);
 
     if(inCartProduct){
         //Si el producto ya habia sido agregado al carrito previamente, incrementamos la cantidad
         inCartProduct.quantity++;
     }else{
         // Si el producto no estaba antes en el carrito, lo agrego
-        cart.push({ ...productToAdd, quantity: 1});
+        cart.push({ ...product, quantity: 1});
     }
 
     //Guardo el carrito en localStorage
     saveCartToLocalStorage();
-
-    displayCart();
 }
 
 function saveCartToLocalStorage() {
