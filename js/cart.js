@@ -31,7 +31,9 @@ function displayCart(cart){
                 <small>Subtotal</small>
                 <p id="subtotal-${product.id}">$${product.quantity * product.price}</p>
             </div>
-            <button class="cart-product-delete"><i class="fa-solid fa-trash-can"></i></button>
+            <button class="cart-product-delete" data-product-id="${product.id}">
+                <i class="fa-solid fa-trash-can"></i>
+            </button>
             
         `;
         cartItemsContainer.appendChild(itemDiv);

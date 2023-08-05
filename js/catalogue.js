@@ -55,17 +55,6 @@ function loadProducts(chosenProducts){
 
 }
 
-//Función para el popup al agregar un producto al carrito
-// function showPopup(){
-//     let popup = document.getElementById("popUp");
-//     popup.style.display = "block";
-
-//     setTimeout(() => {
-//         popup.style.display = "none";
-//         //Para que el mensaje se oculte después de 2 segundos
-//     }, 2000);
-// }
-
 //Función para agregar producto al carrito
 function addToCart(product){
     if(!product){
