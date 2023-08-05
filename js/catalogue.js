@@ -49,7 +49,7 @@ function loadProducts(chosenProducts){
 
         //Agrego el evento onclick al botón
 
-        let addToCartButton = div.getElementById(`agregar-${product.id}`);
+        let addToCartButton = document.getElementById(`agregar-${product.id}`);
         addToCartButton.addEventListener('click', () => addToCart(product));
     });
 }
@@ -107,7 +107,6 @@ function saveCartToLocalStorage() {
     // Guardar el carrito en localStorage
     localStorage.setItem("cart", JSON.stringify(cart));
 }
-
 
 
   
