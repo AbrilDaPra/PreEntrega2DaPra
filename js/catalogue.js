@@ -41,15 +41,16 @@ function loadProducts(chosenProducts){
             <img src="${product.img}" alt="${product.name}">
             <h3>${product.name}</h3>
             <h4>Price: $${product.price}</h4>
-            <button class="buy-btn addtocart-btn" id="${product.id}">ADD TO CART</button>
+            <button class="buy-btn addtocart-btn" id="agregar-${product.id}">ADD TO CART</button>
         `;
-
-        //Agrego el evento onclick al botón
-        let addToCartButton = div.querySelector('.buy-btn');
-        addToCartButton.addEventListener('click', () => addToCart(product.id));
         
         //Agrego la card product al contenedor de productos
         productContainer.append(div);
+
+        //Agrego el evento onclick al botón
+
+        let addToCartButton = div.getElementById(`agregar-${product.id}`);
+        addToCartButton.addEventListener('click', () => addToCart(product));
     });
 }
 
@@ -81,14 +82,9 @@ categorieItems.forEach((item) => {
     
 
 //Función para agregar producto al carrito
-function addToCart(productID, products, cart){
+function addToCart(productID){
     //Busco el producto por su ID en el array de productos disponibles
     let productToAdd = products.find((product) => product.id === productID);
-
-    if(!productToAdd){
-        console.error("The product doesn't exists...");
-        return;
-    }
 
     //Verifico si el producto ya fue agregado al carrito
     let inCartProduct = cart.find((product) => product.id === productID);
@@ -103,9 +99,13 @@ function addToCart(productID, products, cart){
 
     //Guardo el carrito en localStorage
     saveCartToLocalStorage();
-    
-    //Actualizo la visualización del carrito
+
     displayCart();
+}
+
+function saveCartToLocalStorage() {
+    // Guardar el carrito en localStorage
+    localStorage.setItem("cart", JSON.stringify(cart));
 }
 
 
