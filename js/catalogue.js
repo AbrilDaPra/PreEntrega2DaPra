@@ -35,8 +35,8 @@ function loadProducts(chosenProducts){
     productContainer.innerHTML = "";
 
     chosenProducts.forEach((product) => {
-        let div = document.createElement('div');
-        div.classList.add('card-product'); 
+        let div = document.createElement("div");
+        div.classList.add("card-product"); 
         div.innerHTML = `
             <img src="${product.img}" alt="${product.name}">
             <h3>${product.name}</h3>
@@ -50,14 +50,36 @@ function loadProducts(chosenProducts){
         //Agrego el evento onclick al botón
 
         let addToCartButton = document.getElementById(`agregar-${product.id}`);
-        addToCartButton.addEventListener('click', () => addToCart(product.id));
+        addToCartButton.addEventListener('click', () => addToCart(product));
     });
+}
+
+//Función para agregar producto al carrito
+function addToCart(product){
+    if(!product){
+        console.error("The product doesn't exists...");
+        return;
+    }
+
+    //Verifico si el producto ya fue agregado al carrito
+    let inCartProduct = cart.find((prod) => prod.id === product.id);
+
+    if(inCartProduct){
+        //Si el producto ya habia sido agregado al carrito previamente, incrementamos la cantidad
+        inCartProduct.quantity++;
+    }else{
+        // Si el producto no estaba antes en el carrito, lo agrego
+        cart.push({ ...product, quantity: 1});
+    }
+
+    //Guardo el carrito en localStorage
+    saveCartToLocalStorage();
 }
 
 //Cargo todos los productos sin filtro
 loadProducts(products);
 
-//Función para filtrar los productos según la categoria seleccionada
+// //Función para filtrar los productos según la categoria seleccionada
 function filterProductsByCategorie(categorie){
     if (categorie === "all"){
         //Si la opción seleccionada es "all", llama a la función que muestra todos los productos
@@ -80,24 +102,6 @@ categorieItems.forEach((item) => {
     });
 });
     
-
-//Función para agregar producto al carrito
-function addToCart(product){
-    //Verifico si el producto ya fue agregado al carrito
-    let inCartProduct = cart.find((prod) => prod.id === product.id);
-
-    if(inCartProduct){
-        //Si el producto ya habia sido agregado al carrito previamente, incrementamos la cantidad
-        inCartProduct.quantity++;
-    }else{
-        // Si el producto no estaba antes en el carrito, lo agrego
-        cart.push({ ...product, quantity: 1});
-    }
-
-    //Guardo el carrito en localStorage
-    saveCartToLocalStorage();
-}
-
 function saveCartToLocalStorage() {
     // Guardar el carrito en localStorage
     localStorage.setItem("cart", JSON.stringify(cart));
