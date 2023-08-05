@@ -14,17 +14,54 @@ function displayCart(cart){
         let itemDiv = document.createElement("div");
         itemDiv.classList.add("cart-item");
         itemDiv.innerHTML = `
-            <img src="${product.img}" alt="${product.name}">
-            <h3>${product.name}</h3>
-            <p>Price: $${product.price}</p>
-            <p>Quantity: ${product.quantity}</p>
+            <img class="cart-product-img" src="${product.img}" alt="${product.name}">
+            <div class="cart-name">
+                <small>Name</small>
+                <h3>${product.name}</h3>
+            </div>
+            <div class="cart-product-quantity">
+                <small>Quantity</small>
+                <p>${product.quantity}</p>
+            </div>
+            <div class="cart-product-price">
+                <small>Price</small>
+                <p>$${product.price}</p>
+            </div>
+            <div class="cart-product-subtotal">
+                <small>Subtotal</small>
+                <p id="subtotal-${product.id}">$${product.quantity * product.price}</p>
+            </div>
+            <button class="cart-product-delete"><i class="fa-solid fa-trash-can"></i></button>
+            
         `;
         cartItemsContainer.appendChild(itemDiv);
     });
+
+    //Agrego evento de click para eliminar productos
+    let trashCan = document.querySelectorAll(".cart-product-delete");
+    trashCan.forEach((button) => {
+        button.addEventListener("click", deleteSpecificProduct);
+    })
+
     updateTotal(cart);
 }
 
 displayCart(cart);
+
+//Función para eliminar productos mediante el icono de basura
+function deleteSpecificProduct(event){
+    //Obtengo el ID del producto
+    let productID = event.currentTarget.getAttribute("data-product-id");
+
+    //Elimino el producto del carrito por su ID
+    cart = cart.filter((product) => product.id !== productID);
+
+    //Actualizo el carrito en localStorage
+    saveCartToLocalStorage();
+
+    // Actualizo la visualización del carrito
+    displayCart(cart);
+}
 
 //Función para actulizar el total 
 function updateTotal (cart){
@@ -51,7 +88,7 @@ clearCart.addEventListener('click', () => {
     //Vacio el carrito
     cart = [];
     //Guardo el carrito vacio en localStorage
-    saveCartToLocalStorage;
+    saveCartToLocalStorage();
     //Actualizo la visualización del carrito
     displayCart(cart);
 
