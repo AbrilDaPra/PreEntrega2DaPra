@@ -1,6 +1,9 @@
 // Creo los array para el shopping cart y para los productos disponibles (dentro de este array pongo objetos que son cada producto)
 let cart = [];
 
+//Guardo la variable cart en el objeto window para hacerla global y poder usarla en cart.js
+window.cart = cart;
+
 let products = [
     {name: 'AKIRA', price: 6400, id: 'akira', img: '../images/favorites-akira.PNG', categorie: {name: 'Fanny Pack', id: 'fannypack'}},
     {name: 'ADDAMS', price: 6400, id: 'addams', img: '../images/catalogue-addams.PNG', categorie: {name: 'Fanny Pack', id: 'fannypack'}},
@@ -107,7 +110,10 @@ function saveCartToLocalStorage() {
     localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-
+//Cargar todos los productos al cargar la página
+document.addEventListener("DOMContentLoaded", function(){
+    loadProducts(products);
+})
   
 
 

@@ -416,7 +416,7 @@ footer{
     display: flex;
     justify-content: space-between;
 }
-.cart-actions-empty{
+.clear-cart{
     border: 0;
     background-color: rgba(128, 128, 128, 0.3);
     padding: 10px;
@@ -464,6 +464,20 @@ footer{
 
 .disabled{
     display: none;
+}
+/* CARD IN CART */
+.cart-item img{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+.cart-item h3{
+    font-size: 18px;
+    color: #87f867;
+}
+.cart-item p{
+    font-size: 15px;
+    color: white;
 }
 
 
