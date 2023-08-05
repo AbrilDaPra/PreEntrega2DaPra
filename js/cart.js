@@ -1,7 +1,7 @@
 //Declaro las variables
 let clearCart = document.querySelector(".clear-cart");
 let total =document.querySelector("#total");
-let cart = window.cart;
+let cart= JSON.parse(localStorage.getItem("cart")) || [];
 
 //Función para mostrar el carrito en la página
 function displayCart(cart){
@@ -24,18 +24,23 @@ function displayCart(cart){
     updateTotal(cart);
 }
 
+displayCart(cart);
+
 //Función para actulizar el total 
 function updateTotal (cart){
     let total = 0;
     cart.forEach((product) => {
         total += product.quantity * product.price;
     });
-    total.textContent = `$${total}`;
+    //Actualizo el contenido del elemnto con el ID "total" en el HTMl
+    let  totalElement = document.getElementById("total")
+    totalElement.textContent = `$${total}`;
 }
 
 //Función para guardar el carrito en localStorage
 function saveCartToLocalStorage(){
     localStorage.setItem("cart", JSON.stringify(cart));
+    updateTotal(cart);
 }
 
 //Calculo del total de la compra
@@ -49,4 +54,6 @@ clearCart.addEventListener('click', () => {
     saveCartToLocalStorage;
     //Actualizo la visualización del carrito
     displayCart(cart);
+
+    console.log(cart);
 });

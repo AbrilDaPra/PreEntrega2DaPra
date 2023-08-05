@@ -355,6 +355,18 @@ footer{
     padding: 5px;
 }
 
+/* POPUP */
+.popup{
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: black;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
 /* CART */
 #shoppingCart{
     height: 75vh;
