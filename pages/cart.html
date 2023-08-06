@@ -19,60 +19,58 @@
     </head>
     <body>
         <!-- HEADER -->
-        <header>
-            <!-- NAV -->
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
-              <div class="container-fluid">
-                <a class="navbar-brand" href="../index.html"><h1>PISTACHO ARG</h1></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav mx-auto ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="../index.html">HOME</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./catalogue.html">CATALOGUE</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./howtobuy.html">HOW TO BUY</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./aboutus.html">ABOUT US</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./contact.html">CONTACT</a></li>
-                  </ul>
-                  <ul class="navbar-nav">
-                      <li class="nav-item">
-                        <a class="nav-link" href="./cart.html">
-                          <i class="fa-solid fa-cart-shopping"></i>
-                          <span id="cartItemCounter">0</span>
-                        </a>
-                      </li>
+        <div class="wrapper">
+          <header>
+              <!-- NAV -->
+              <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="../index.html"><h1>PISTACHO ARG</h1></a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto ms-auto mb-2 mb-lg-0">
+                      <li class="nav-item"><a class="nav-link" href="../index.html">HOME</a></li>
+                      <li class="nav-item"><a class="nav-link" href="./catalogue.html">CATALOGUE</a></li>
+                      <li class="nav-item"><a class="nav-link" href="./howtobuy.html">HOW TO BUY</a></li>
+                      <li class="nav-item"><a class="nav-link" href="./aboutus.html">ABOUT US</a></li>
+                      <li class="nav-item"><a class="nav-link" href="./contact.html">CONTACT</a></li>
                     </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                          <a class="nav-link" href="./cart.html">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <span id="cartItemCounter">0</span>
+                          </a>
+                        </li>
+                      </ul>
+                  </div>
+                </div>
+              </nav>
+          </header>
+
+          <!-- MAIN -->
+          <main>
+            <section id="cart">
+              <h2 class="subtitle">SHOPPING CART</h2>
+
+              <div id="cartItems"></div>
+
+              <div class="cart-actions">
+                <div class="cart-actions-left">
+                  <button class="clear-cart">CLEAR CART</button>
+                </div>
+                <div class="cart-actions-right">
+                  <div class="cart-actions-total">
+                    <p>Total:</p>
+                    <p id="total">$0</p>
+                  </div>
+                  <div class="cart-actions-buy">COMPLETE PURCHASE</div>
                 </div>
               </div>
-            </nav>
-        </header>
-
-        <!-- MAIN -->
-        <main>
-          <section id="cart">
-            <h2 class="subtitle">SHOPPING CART</h2>
-
-            <div id="cartItems"></div>
-
-            <div class="cart-actions">
-              <div class="cart-actions-left">
-                <button class="clear-cart">CLEAR CART</button>
-              </div>
-              <div class="cart-actions-right">
-                <div class="cart-actions-total">
-                  <p>Total:</p>
-                  <p id="total">$0</p>
-                </div>
-                <div class="cart-actions-buy">COMPLETE PURCHASE</div>
-              </div>
-            </div>
-
-            <p class="cart-bought disabled">Thank you for your purchase!</p>
-            
-            </div>
-          </section>
-        </main>
+            </section>
+          </main>
+        </div>
 
         <!-- FOOTER -->
         <footer>

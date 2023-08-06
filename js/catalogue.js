@@ -1,4 +1,4 @@
-// Creo los array para el shopping cart y para los productos disponibles (dentro de este array pongo objetos que son cada producto)
+//Creo los array para el shopping cart y para los productos disponibles (dentro de este array pongo objetos que son cada producto)
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 let products = [
@@ -28,7 +28,7 @@ let products = [
     {name: 'MINI black braided wallet', price: 5550, id: 'miniblackbraidedwallet', img: '../images/wallet-mini-black-braided.PNG', categorie: {name: 'Wallet', id: 'wallet'}},
 ];
 
-//Establezco variables y obtengo elementos del DOM
+//Declaro variables y obtengo elementos del DOM
 let inCartProduct;
 let searchInput = document.getElementById("searchInput");
 let searchButton = document.getElementById("searchButton");
@@ -42,6 +42,7 @@ function loadProducts(chosenProducts){
     //Vaciamos el contenedor antes de cargar los productos
     productContainer.innerHTML = "";
 
+    //Utilizo un forEach para crear todos los productos
     chosenProducts.forEach((product) => {
         let div = document.createElement("div");
         div.classList.add("card-product"); 
@@ -55,12 +56,10 @@ function loadProducts(chosenProducts){
         //Agrego la card product al contenedor de productos
         productContainer.append(div);
 
-        //Agrego el evento onclick al botón
-
+        //Agrego el evento onclick al botón "ADD TO CART"
         let addToCartButton = document.getElementById(`agregar-${product.id}`);
         addToCartButton.addEventListener('click', () => addToCart(product));
     });
-
 }
 
 //Función para agregar producto al carrito
@@ -77,7 +76,7 @@ function addToCart(product){
         //Si el producto ya habia sido agregado al carrito previamente, incrementamos la cantidad
         inCartProduct.quantity++;
     }else{
-        // Si el producto no estaba antes en el carrito, lo agrego
+        // Si el producto no estaba antes en el carrito, lo agrego utilizando spread para agregar la nueva propiedad y luego push
         cart.push({ ...product, quantity: 1});
     }
 
@@ -94,18 +93,14 @@ function addToCart(product){
 //Cargo todos los productos sin filtro
 loadProducts(products);
 
-// //Función para filtrar los productos según la categoria seleccionada
+//Función para filtrar los productos según la categoria seleccionada
 function filterProductsByCategorie(categorie){
-    if (categorie === "all"){
-        //Si la opción seleccionada es "all", llama a la función que muestra todos los productos
-        loadProducts(products);
-    }else{
-        //Si la opción seleccionada no es "all", filtra según id asignado
-        let productsByCategorie = products.filter(
-            (product) => product.categorie.id === categorie
-        );
-        loadProducts(productsByCategorie);
-    }
+    //Utilizo operador ternario para simplificar el if-else
+    let filteredProducts = categorie === "all"
+    ? products
+    : products.filter((product) => product.categorie.id === categorie);
+
+    loadProducts(filteredProducts);
 }
 
 //Event listener para cada categoría

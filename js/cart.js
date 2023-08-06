@@ -9,36 +9,48 @@ function displayCart(cart){
     //Para ver que el contenedor esté vacío antes de agregar los elementos del carrito
     cartItemsContainer.innerHTML = "";
 
-    //Recorro el carrito y muestro los productos que contiene
-    cart.forEach((product) => {
-        let itemDiv = document.createElement("div");
-        itemDiv.classList.add("cart-item");
-        itemDiv.innerHTML = `
-            <img class="cart-product-img" src="${product.img}" alt="${product.name}">
-            <div class="cart-name">
-                <small>Name</small>
-                <h3>${product.name}</h3>
-            </div>
-            <div class="cart-product-quantity">
-                <small>Quantity</small>
-                <p>${product.quantity}</p>
-            </div>
-            <div class="cart-product-price">
-                <small>Price</small>
-                <p>$${product.price}</p>
-            </div>
-            <div class="cart-product-subtotal">
-                <small>Subtotal</small>
-                <p id="subtotal-${product.id}">$${product.quantity * product.price}</p>
-            </div>
-            <button class="cart-product-delete" data-product-id="${product.id}" data-product-quantity=${product.quantity}>
-                <i class="fa-solid fa-trash-can"></i>
-            </button>
-            
+    if(cart.length === 0){
+        let itemmDiv = document.createElement("div");
+        itemmDiv.classList.add("yourCartEmpty");
+        itemmDiv.innerHTML = `
+            <p>Your cart is empty!</p>
+            <i class="fa-solid fa-heart-crack"></i>
         `;
-        cartItemsContainer.appendChild(itemDiv);
-    });
 
+        //Agrego el mensaje al contenedor del carrito
+        cartItemsContainer.appendChild(itemmDiv);
+    } else{
+        //Recorro el carrito y muestro los productos que contiene
+        cart.forEach((product) => {
+            let itemDiv = document.createElement("div");
+            itemDiv.classList.add("cart-item");
+            itemDiv.innerHTML = `
+                <img class="cart-product-img" src="${product.img}" alt="${product.name}">
+                <div class="cart-name">
+                    <small>Name</small>
+                    <h3>${product.name}</h3>
+                </div>
+                <div class="cart-product-quantity">
+                    <small>Quantity</small>
+                    <p>${product.quantity}</p>
+                </div>
+                <div class="cart-product-price">
+                    <small>Price</small>
+                    <p>$${product.price}</p>
+                </div>
+                <div class="cart-product-subtotal">
+                    <small>Subtotal</small>
+                    <p id="subtotal-${product.id}">$${product.quantity * product.price}</p>
+                </div>
+                <button class="cart-product-delete" data-product-id="${product.id}" data-product-quantity=${product.quantity}>
+                    <i class="fa-solid fa-trash-can"></i>
+                </button>
+                
+            `;
+            cartItemsContainer.appendChild(itemDiv);
+        });
+    }
+    
     //Agrego evento de click para eliminar productos
     let trashCan = document.querySelectorAll(".cart-product-delete");
     trashCan.forEach((button) => {
@@ -74,7 +86,8 @@ function updateTotal (cart){
     cart.forEach((product) => {
         total += product.quantity * product.price;
     });
-    //Actualizo el contenido del elemnto con el ID "total" en el HTMl
+
+    //Actualizo el contenido del elemento con el ID "total" en el HTMl
     let  totalElement = document.getElementById("total")
     totalElement.textContent = `$${total}`;
 }
@@ -92,7 +105,7 @@ updateTotal(cart);
 clearCart.addEventListener('click', () => {
     //Vacio el carrito
     cart = [];
-    
+
     //Guardo el carrito vacio en localStorage
     saveCartToLocalStorage();
 
@@ -101,6 +114,4 @@ clearCart.addEventListener('click', () => {
 
     //Actualizo el contador del carrio
     updateQuantityIconCart(0);
-
-    console.log(cart);
 });
