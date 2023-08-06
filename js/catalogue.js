@@ -28,9 +28,13 @@ let products = [
     {name: 'MINI black braided wallet', price: 5550, id: 'miniblackbraidedwallet', img: '../images/wallet-mini-black-braided.PNG', categorie: {name: 'Wallet', id: 'wallet'}},
 ];
 
+//Establezco variables y obtengo elementos del DOM
 let inCartProduct;
 let searchInput = document.getElementById("searchInput");
 let searchButton = document.getElementById("searchButton");
+let filterButton = document.getElementById('filters');
+let filterOptions = document.getElementById('filterOptions');
+let productList = document.getElementById("productList");
 
 //Función para cargar los productos en el contenedor
 function loadProducts(chosenProducts){
@@ -142,3 +146,54 @@ searchInput.addEventListener("keyup", event => {
         searchBar();
     }
 });
+
+//Agrego el evento click al botón de los filtros
+filterButton.addEventListener("click", toggleFilterOptions);
+
+//Para que el menú desplegable no se oculte despues de hacerle click
+filterOptions.addEventListener("click", (event) => event.stopPropagation());
+
+//Función para mostrar u ocultar el dropdown
+function toggleFilterOptions() {
+    filterButton.classList.toggle("open");
+}
+
+//Agrego un evento change al dropdown para las opciones
+filterOptions.addEventListener("change", filterSelection);
+
+//Función para manejar la selección de filtros
+function filterSelection(event){
+    let selectedValue = event.target.value;
+
+    //Filtro y ordeno los productos según la opción seleccionada
+    let filteredProducts = [...products];
+
+    if (selectedValue === "priceLowToHigh") {
+        filteredProducts.sort((a, b) => a.price - b.price);
+      } else if (selectedValue === "priceHighToLow") {
+        filteredProducts.sort((a, b) => b.price - a.price);
+      } else if (selectedValue === "alphabetical") {
+        filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+      }
+
+    //Muestro los productos filtrados y ordenados en el HTML
+    displayProductsFiltered(filteredProducts, document.getElementById("productContainer"));
+}
+
+// Función para mostrar los productos en el HTML
+function displayProductsFiltered(productsToShow, container) {
+  container.innerHTML = "";
+
+  productsToShow.forEach((product) => {
+    let productDiv = document.createElement("div");
+    productDiv.classList.add("card-product");
+    productDiv.innerHTML = `
+        <img src="${product.img}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <h4>Price: $${product.price}</h4>
+        <button class="buy-btn addtocart-btn" id="agregar-${product.id}">ADD TO CART</button>
+    `;
+    
+    container.appendChild(productDiv);
+  });
+}
