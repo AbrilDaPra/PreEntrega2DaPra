@@ -61,6 +61,26 @@ header{
     background-color: #87f867;
 }
 
+.search-container{
+    display: flex;
+    align-items: center;
+}
+#searchInput{
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+#searchButton{
+    color: #87f867;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+
 /* MAIN */
 main{
     background-color: black;
@@ -354,6 +374,21 @@ footer{
     border-color: #87f867;
     padding: 5px;
 }
+
+/* FILTERS */
+#filters{
+    display: flex;
+    justify-content: end;
+    padding-right: 80px;
+    margin-bottom: 30px;
+}
+#filters span{
+    color: #87f867;
+    font-size: 18px;
+    padding-right: 20px;
+}
+
+
 
 /* CART */
 #cart{

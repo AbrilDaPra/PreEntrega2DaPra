@@ -31,7 +31,7 @@ function displayCart(cart){
                 <small>Subtotal</small>
                 <p id="subtotal-${product.id}">$${product.quantity * product.price}</p>
             </div>
-            <button class="cart-product-delete" data-product-id="${product.id}">
+            <button class="cart-product-delete" data-product-id="${product.id}" data-product-quantity=${product.quantity}>
                 <i class="fa-solid fa-trash-can"></i>
             </button>
             
@@ -61,6 +61,9 @@ function deleteSpecificProduct(event){
     //Actualizo el carrito en localStorage
     saveCartToLocalStorage();
 
+    //Actualizo el contador
+    updateQuantityIconCart();
+
     // Actualizo la visualización del carrito
     displayCart(cart);
 }
@@ -89,10 +92,15 @@ updateTotal(cart);
 clearCart.addEventListener('click', () => {
     //Vacio el carrito
     cart = [];
+    
     //Guardo el carrito vacio en localStorage
     saveCartToLocalStorage();
+
     //Actualizo la visualización del carrito
     displayCart(cart);
+
+    //Actualizo el contador del carrio
+    updateQuantityIconCart(0);
 
     console.log(cart);
 });
