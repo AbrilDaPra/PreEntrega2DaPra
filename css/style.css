@@ -484,14 +484,20 @@ footer{
 
 /* SWEETALERT */
 .sweetalert-popup{
-    background-color: #87f867;
+    background-color: white;
 }
 .sweetalert-title{
     font-size: 20px;
     font-family: 'Raleway';
     color: black;
 }
-
+.sweetalert-confirmBtn{
+    color: black;
+}
+.ok-btn{
+    background-color: #87f867;
+    color: black;
+}
 
 @keyframes changeTypography {
     0% {

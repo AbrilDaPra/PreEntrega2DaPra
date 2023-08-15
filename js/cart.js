@@ -143,10 +143,9 @@ clearCart.addEventListener('click', () => {
           Swal.fire({
             title: 'Deleted!', 
             text: 'Your cart has been emptied.',
-            icon: 'success',
+            confirmButtonColor: '#87f867',
             customClass:{
                 title: 'sweetalert-title',
-                confirmButton: 'sweetalert-confirmBtn',
                 popup: 'sweetalert-popup'
             }
         })
