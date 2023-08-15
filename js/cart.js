@@ -1,6 +1,7 @@
 //Declaro las variables
 let clearCart = document.querySelector(".clear-cart");
 let total =document.querySelector("#total");
+const completePurchaseButton = document.querySelector('.cart-actions-buy');
 let cart= JSON.parse(localStorage.getItem("cart")) || [];
 
 //Función para mostrar el carrito en la página
@@ -161,3 +162,9 @@ clearCart.addEventListener('click', () => {
         }
       });
 });
+
+//Agrego evento de click al botón de "Complete purchase"
+completePurchaseButton.addEventListener('click', () => {
+    //Dirijo al usuario a la página de formulario
+    window.location.href = '../pages/form.html';
+})
