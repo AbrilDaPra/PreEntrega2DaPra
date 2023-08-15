@@ -483,10 +483,10 @@ footer{
 }
 
 /* SWEETALERT */
-.popup{
+.sweetalert-popup{
     background-color: #87f867;
 }
-.popup-title{
+.sweetalert-title{
     font-size: 20px;
     font-family: 'Raleway';
     color: black;

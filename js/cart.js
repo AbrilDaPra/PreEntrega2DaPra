@@ -70,6 +70,26 @@ function deleteSpecificProduct(event){
     //Elimino el producto del carrito por su ID
     cart = cart.filter((product) => product.id !== productID);
 
+    //Toastify cuando se elimina producto del carrito
+    Toastify({
+        text: "The product was removed from your cart",
+        duration: 3000,
+        close: true,
+        gravity: "top",
+        position: "right",
+        stopOnFocus: true,
+        style: {
+          background: "#87f867",
+          borderRadius: "5px",
+          color: "#000000",
+        },
+        offset: {
+            x: 60,
+            y: 60
+          },
+        onClick: function(){}
+      }).showToast();
+
     //Actualizo el carrito en localStorage
     saveCartToLocalStorage();
 
@@ -106,12 +126,39 @@ clearCart.addEventListener('click', () => {
     //Vacio el carrito
     cart = [];
 
-    //Guardo el carrito vacio en localStorage
-    saveCartToLocalStorage();
+    Swal.fire({
+        title: 'Are you sure you want to empty your cart?',
+        showCancelButton: true,
+        confirmButtonColor: '#87f867',
+        cancelButtonColor: '#000000',
+        confirmButtonText: 'Yes, empty it!',
+        customClass: {
+            title: 'sweetalert-title',
+            confirmButton: 'sweetalert-confirmBtn',
+            cancelButton: 'sweetalert-cancelBtn',
+            popup: 'sweetalert-popup'
+        }
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: 'Deleted!', 
+            text: 'Your cart has been emptied.',
+            icon: 'success',
+            customClass:{
+                title: 'sweetalert-title',
+                confirmButton: 'sweetalert-confirmBtn',
+                popup: 'sweetalert-popup'
+            }
+        })
 
-    //Actualizo la visualización del carrito
-    displayCart(cart);
+            //Guardo el carrito vacio en localStorage
+            saveCartToLocalStorage();
 
-    //Actualizo el contador del carrio
-    updateQuantityIconCart(0);
+            //Actualizo la visualización del carrito
+            displayCart(cart);
+
+            //Actualizo el contador del carrio
+            updateQuantityIconCart(0);
+        }
+      });
 });
