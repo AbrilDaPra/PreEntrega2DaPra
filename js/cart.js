@@ -165,6 +165,21 @@ clearCart.addEventListener('click', () => {
 
 //Agrego evento de click al botón de "Complete purchase"
 completePurchaseButton.addEventListener('click', () => {
-    //Dirijo al usuario a la página de formulario
-    window.location.href = '../pages/form.html';
-})
+    //Verifico si el carrito no está vacío
+    if (cart.length > 0){
+        //Dirijo al usuario a la página de formulario
+        window.location.href = '../pages/form.html';
+    } else {
+        //Muestro un mensaje de que el carrito está vacío
+        Swal.fire({
+            title: 'Your cart is empty!',
+            text: 'Please add products to your cart before completing the purchase.',
+            confirmButtonColor: '#87f867',
+            customClass: {
+                title: 'sweetalert-title',
+                confirmButton: 'sweetalert-confirmBtn',
+                popup: 'sweetalert-popup'
+            }
+        });
+    }
+});
