@@ -482,7 +482,15 @@ footer{
     display: none;
 }
 
-
+/* SWEETALERT */
+.popup{
+    background-color: #87f867;
+}
+.popup-title{
+    font-size: 20px;
+    font-family: 'Raleway';
+    color: black;
+}
 
 
 @keyframes changeTypography {

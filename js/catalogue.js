@@ -86,6 +86,18 @@ function addToCart(product){
     //Guardo el carrito en localStorage
     saveCartToLocalStorage();
 
+    //Alerta al agregar producto al carrito
+    Swal.fire({
+        position: 'top-end',
+        title: 'The product was added to your cart',
+        showConfirmButton: false,
+        timer: 1500,
+        customClass: {
+            popup: 'popup',
+            title: 'popup-title',
+        }
+    });
+
     //Actualizo el contador almacenado en localStorage
     localStorage.setItem("cartItemCount", cart.reduce((total, product) => total + product.quantity, 0));
 }
