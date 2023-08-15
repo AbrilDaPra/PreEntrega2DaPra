@@ -107,7 +107,7 @@ function filterProductsByCategorie(categorie){
 let categorieItems = document.querySelectorAll(".items-categorie");
 categorieItems.forEach((item) => {
     item.addEventListener("click", (e) => {
-        let selectedCategorie = e.target.dataset.categorie;
+        const selectedCategorie = e.target.dataset.categorie;
         filterProductsByCategorie(selectedCategorie);
     });
 });
@@ -163,20 +163,20 @@ function filterSelection(event){
     //Filtro y ordeno los productos según la opción seleccionada
     let filteredProducts = [...products];
 
-    if (selectedValue === "priceLowToHigh") {
+    if (selectedValue === "priceLowToHigh"){
         filteredProducts.sort((a, b) => a.price - b.price);
-      } else if (selectedValue === "priceHighToLow") {
+    } else if (selectedValue === "priceHighToLow"){
         filteredProducts.sort((a, b) => b.price - a.price);
-      } else if (selectedValue === "alphabetical") {
+    } else if (selectedValue === "alphabetical"){
         filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
-      }
+    }
 
     //Muestro los productos filtrados y ordenados en el HTML
     displayProductsFiltered(filteredProducts, document.getElementById("productContainer"));
 }
 
 // Función para mostrar los productos en el HTML
-function displayProductsFiltered(productsToShow, container) {
+function displayProductsFiltered(productsToShow, container){
   container.innerHTML = "";
 
   productsToShow.forEach((product) => {
