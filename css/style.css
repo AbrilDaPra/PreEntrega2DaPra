@@ -544,3 +544,46 @@ footer{
       font-family: 'Raleway', sans-serif;
     }
 }
+
+/* MEDIAQUERY MOBILE */
+@media (max-width : 576px){
+    #hero h2{
+        font-size: 70px;
+    }
+    #favorites .col{
+        padding-bottom: 40px;
+    }
+    #itemsCategories{
+        font-size: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .categories{
+        grid-template-columns: 1fr;
+    }
+    .items-categorie{
+        margin: 0;
+    }
+    #howToBuy p{
+        font-size: 18px;
+        margin: 0px 20px;
+    }
+    #howToBuy h2{
+        margin: 10px;
+    }
+    #aboutUs p{
+        font-size: 18px;
+        margin: 0px 20px;
+    }
+    #aboutUs h2{
+        margin: 10px;
+    }
+    #cartItems{
+        padding: 40px 10px;
+    }
+    .cart-product-delete{
+        padding: 5px;
+    }
+}
