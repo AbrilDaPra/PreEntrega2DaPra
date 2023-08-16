@@ -1,7 +1,9 @@
 //Event listener para el botón submit del formulario
-document.getElementById("submitForm").addEventListener('submit', async (event) => {
+document.getElementById("purchaseForm").addEventListener('submit', async (event) => {
     //Para prevenir el comportamiento predeterminado del formulario
     event.preventDefault();
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
     //Mostrar mensaje de proceso
     Toastify({

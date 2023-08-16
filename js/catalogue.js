@@ -68,7 +68,6 @@ function addToCart(product){
     saveCartToLocalStorage();
 
     //Toastify al agregar producto al carrito
-
     Toastify({
         text: "The product was added to your cart",
         duration: 3000,
@@ -91,9 +90,6 @@ function addToCart(product){
     //Actualizo el contador almacenado en localStorage
     localStorage.setItem("cartItemCount", cart.reduce((total, product) => total + product.quantity, 0));
 }
-
-//Cargo todos los productos sin filtro
-// loadProducts(products);
 
 //Función para filtrar los productos según la categoria seleccionada
 function filterProductsByCategorie(categorie){
