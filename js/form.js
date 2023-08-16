@@ -1,9 +1,9 @@
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
 //Event listener para el botón submit del formulario
 document.getElementById("purchaseForm").addEventListener('submit', async (event) => {
     //Para prevenir el comportamiento predeterminado del formulario
     event.preventDefault();
-
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
     //Mostrar mensaje de proceso
     Toastify({
@@ -29,6 +29,9 @@ document.getElementById("purchaseForm").addEventListener('submit', async (event)
     document.getElementById("purchaseForm").reset();
     cart = [];
 
+    //?
+    localStorage.setItem("cart", JSON.stringify(cart));
+
     //Muestro mensaje de éxito
     Swal.fire({
         icon: 'success',
@@ -41,10 +44,14 @@ document.getElementById("purchaseForm").addEventListener('submit', async (event)
             popup: 'sweetalert-popup'
         }
     });
-
-    //Actualizo la visualización del carrito
-    displayCart(cart);
-
-    //Actualizo el contador del carrito
-    updateQuantityIconCart(0);
 });
+
+//Función para actualizar el contador
+function updateQuantityIconCart(){
+    //Actualizo el contador en el elemento HTML
+    let cartItemCounter = document.querySelector("#cartItemCounter");
+    cartItemCounter.innerText = 0;
+
+    //Guardo la cantidad actualizada en localStorage
+    localStorage.setItem("cartItemCount", 0);
+}

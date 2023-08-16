@@ -89,6 +89,9 @@ function addToCart(product){
 
     //Actualizo el contador almacenado en localStorage
     localStorage.setItem("cartItemCount", cart.reduce((total, product) => total + product.quantity, 0));
+
+    //Actualizo el contador de la página
+    updateQuantityIconCart();
 }
 
 //Función para filtrar los productos según la categoria seleccionada
