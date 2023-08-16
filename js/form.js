@@ -37,18 +37,21 @@ document.getElementById("purchaseForm").addEventListener('submit', async (event)
         title: 'Success!',
         text: 'Your order was successfully placed. We will contact you shortly.',
         confirmButtonColor: '#87f867',
+        confirmButtonText: 'OK',
         customClass: {
             title: 'sweetalert-title',
             confirmButton: 'sweetalert-confirmBtn',
             popup: 'sweetalert-popup'
         }
+    }).then((result) => {
+        if (result.isConfirmed){
+            //Actualizo el contador
+            updateQuantityIconCart();
+
+            //Redirijo a 'index.html' luego de tocar el botón "OK"
+            window.location.href = '../index.html';
+        }
     });
-
-    //Actualizo el contador
-    updateQuantityIconCart();
-
-    //Redirijo a 'index.html' luego de finalizada la compra
-    window.location.href = '../index.html';
 });
 
 //Función para actualizar el contador
