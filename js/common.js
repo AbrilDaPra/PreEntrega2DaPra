@@ -1,6 +1,6 @@
 //Obtengo el valor actual del contador desde el almacenamiento local
 let cartItemCount = localStorage.getItem("cartItemCount");
-
+//cart?
 
 cartItemCounter.innerText = cartItemCount || 0; 
 
