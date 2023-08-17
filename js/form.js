@@ -45,9 +45,6 @@ document.getElementById("purchaseForm").addEventListener('submit', async (event)
         }
     }).then((result) => {
         if (result.isConfirmed){
-            //Actualizo el contador
-            updateQuantityIconCart();
-
             //Redirijo a 'index.html' luego de tocar el botón "OK"
             window.location.href = '../index.html';
         }
@@ -55,13 +52,13 @@ document.getElementById("purchaseForm").addEventListener('submit', async (event)
 });
 
 //Función para actualizar el contador
-function updateQuantityIconCart(){
-    //Actualizo el contador en el elemento HTML
-    let cartItemCounter = document.querySelector("#cartItemCounter");
+// function updateQuantityIconCart(){
+//     //Actualizo el contador en el elemento HTML
+//     let cartItemCounter = document.querySelector("#cartItemCounter");
 
-    let newQuantity = cart.reduce((total, product) => total + product.quantity, 0);
-    cartItemCounter.innerText = newQuantity;
+//     let newQuantity = cart.reduce((total, product) => total + product.quantity, 0);
+//     cartItemCounter.innerText = newQuantity;
 
-    //Guardo la cantidad actualizada en localStorage
-    localStorage.setItem("cartItemCount", newQuantity);
-}
+//     //Guardo la cantidad actualizada en localStorage
+//     localStorage.setItem("cartItemCount", newQuantity);
+// }
