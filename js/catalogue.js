@@ -40,6 +40,8 @@ function loadProducts(chosenProducts){
         //Agrego el evento onclick al botón "ADD TO CART"
         let addToCartButton = document.getElementById(`agregar-${product.id}`);
         addToCartButton.addEventListener('click', () => addToCart(product));
+
+        // setupAddToCartButtons();
     });
 }
 
@@ -110,8 +112,40 @@ categorieItems.forEach((item) => {
     item.addEventListener("click", (e) => {
         const selectedCategorie = e.target.dataset.categorie;
         filterProductsByCategorie(selectedCategorie);
+
+        //Vuelvo a configurar el evento click en el botón addToCart
+        // setupAddToCartButtons();
     });
 });
+
+//Función para configurar el evento click en el botón addToCart luego del filtro
+// function setupAddToCartButtons(){
+//     let addToCartButtons = document.querySelectorAll(".addtocart-btn");
+//     addToCartButtons.forEach((button) => {
+//         // button.addEventListener("click", () => {
+//         //     let productID = button.id.split("-")[1];
+//         //     let product = products.find((prod) => prod.id === productID);
+//         //     addToCart(product);
+//         // });
+//         button.removeEventListener("click", handleAddToCartClick);
+//         button.addEventListener("click", handleAddToCartClick);
+//     });
+
+//     // Event listener para el contenedor de productos (utilizando event delegation)
+//     document.getElementById("productContainer").addEventListener("click", (event) => {
+//         if (event.target.classList.contains("addtocart-btn")) {
+//             let productID = event.target.id.split("-")[1];
+//             let product = products.find((prod) => prod.id === productID);
+//             addToCart(product);
+//         }
+//     });
+// }
+
+// function handleAddToCartClick(event){
+//     let productID = event.target.id.split("-")[1];
+//     let product = products.find((prod) => prod.id === productID);
+//     addToCart(product);
+// }
     
 function saveCartToLocalStorage() {
     //Guardo el carrito en localStorage
@@ -121,6 +155,7 @@ function saveCartToLocalStorage() {
 //Cargo todos los productos al cargar la página
 document.addEventListener("DOMContentLoaded", function(){
     loadProducts(products);
+    // setupAddToCartButtons();
 })
 
 //Función para manejar la búsqueda
